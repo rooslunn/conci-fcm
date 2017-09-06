@@ -1,0 +1,8 @@
+[
+  '{{repeat(2)}}',
+  {
+    latitude: '{{floating(-90.000001, 90)}}',
+    longitude: '{{floating(-180.000001, 180)}}',
+    to: "eDUYQLanoTo:APA91bFFT3p4xAKIWLsGgfqITjy0BXZfQGxCIj-cvyIco3hxvwupGvqF24s3qBHbJx0J63qJ_MuaFCAhQm9QBabXW5Iex5StiEWfbq0ympt9zX3TBKKclZI_-HYp0nAbmh0bOHd2O-6X"
+  }
+]

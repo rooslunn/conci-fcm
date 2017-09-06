@@ -16,15 +16,16 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/test', function () {
-    $request = new \GuzzleHttp\Psr7\Request('POST', 'https://fcm.googleapis.com/fcm/send', [
+    $request = new \GuzzleHttp\Psr7\Request('POST', env('FCM_SERVER'), [
         'Content-Type' => 'application/json',
-        'Authorization' => 'key=AAAAOAl_8L0:APA91bHe1HBVyM1Bq9ZtvUUBds4vjTFI7gDETRmUaqmyPY-VapuS0_nTaaG3QJPGNdhMRNzXlJR8oIAIq7YeTmdZ8y85Qf2qqZoYQjB9Y9Q0UaIQ-qrVXWaCSSED1-0TOP0ibFnr5sKf',
+        'Authorization' => 'key=' . env('FCM_SERVER_KEY'),
     ], json_encode([
         'data' => [
             'lat' => 15,
             'lon' => 15,
         ],
-        'to' => 'c0UP7Zz7MXQ:APA91bFswI_4pfq-KLbH5WeREj8-Sge5IR5cbEU1wKrm2_O9g2Cgwt1CJLU2fJjlNZUwlXLktkeFfPGrO2nh5ZSPt9-1ttlFhrBt0-QhBoZnSK5SCBXS_3Z9PcZPCizo3YeJ9vS3bc6x',
+//        'to' => env('FCM_TEST_ANDROID_ID'),
+        'to' => env('FCM_TEST_IOS_ID'),
     ]));
     $client = new GuzzleHttp\Client();
     $promise = $client->sendAsync($request)->then(function ($response) {
