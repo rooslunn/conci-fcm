@@ -15,6 +15,10 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+$app->group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function ($app) {
+    $app->post('/test', 'TestMessageController');
+});
+
 $app->get('/test', function () {
     $request = new \GuzzleHttp\Psr7\Request('POST', env('FCM_SERVER'), [
         'Content-Type' => 'application/json',
